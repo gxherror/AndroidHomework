@@ -65,7 +65,6 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-
         if (null != mListener) {
             mListener.onMultiTabsViewDetach();
         }

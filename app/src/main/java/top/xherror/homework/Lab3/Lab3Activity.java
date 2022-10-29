@@ -27,8 +27,8 @@ public class Lab3Activity extends AppCompatActivity implements MainFragment.Main
 
     @Override
     public void onMultiTabsViewDetach() {
-        mReplaceButton.setVisibility(View.VISIBLE);
         /*
+        mReplaceButton.setVisibility(View.VISIBLE);
         TextView tv = findViewById(R.id.tv_tabs_count);
         tv.setVisibility(View.GONE);
 
@@ -42,15 +42,17 @@ public class Lab3Activity extends AppCompatActivity implements MainFragment.Main
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate --- End   ---");
         setContentView(R.layout.activity_lab3);
-
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .add(R.id.fragment_container, new MainFragment())
+                //.addToBackStack(null)
+                .commit();
+        /*
         mReplaceButton = findViewById(R.id.btn_replace);
         mReplaceButton.setOnClickListener(v -> {
-            FragmentManager fm = getSupportFragmentManager();
-            fm.beginTransaction()
-                    .add(R.id.fragment_container, new MainFragment())
-                    .addToBackStack(null)
-                    .commit();
             mReplaceButton.setVisibility(View.GONE);
         });
+
+         */
     }
 }
