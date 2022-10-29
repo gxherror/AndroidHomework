@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HelloTabStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/black</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorGravity">bottom</item>
+        <item name="tabGravity">center</item>
+    </style>
+
+    <style name="HelloTabStyle.Text" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

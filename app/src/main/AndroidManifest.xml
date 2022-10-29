@@ -30,6 +30,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Lab3.Lab3Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <meta-data

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/fragment_hello"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:name="top.xherror.homework.Lab3.HelloFragment" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn_replace"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="Replace" />
+
+    <TextView
+        android:id="@+id/tv_tabs_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:textSize="32sp" />
+
+</FrameLayout>
