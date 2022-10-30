@@ -2,15 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/teal_200" >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieView"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_gravity="center"
-        app:lottie_rawRes="@raw/lottie_dino_dance"
+        app:lottie_rawRes="@raw/lottie_check_animation"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>
 

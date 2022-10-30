@@ -34,9 +34,9 @@ public class ViewAnimationFragment extends BaseFragment {
     private static final float ROTATE_PIVOT = 0.5f;
     private static final float ALPHA_START = 0f;
     private static final float ALPHA_END = 1f;
-    private static final float FROM_X_DELTA = -300f;
+    private static final float FROM_X_DELTA = 0f;
     private static final float TO_X_DELTA = 300f;
-    private static final float FROM_Y_DELTA = -300f;
+    private static final float FROM_Y_DELTA = 0f;
     private static final float TO_Y_DELTA = 300f;
     private static final float FROM_X = 1f;
     private static final float TO_X = 0.5f;
