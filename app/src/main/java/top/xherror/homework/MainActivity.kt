@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import top.xherror.homework.Lab1.Lab1Activity
 import top.xherror.homework.Lab2.Lab2Activity
 import top.xherror.homework.Lab3.Lab3Activity
+import top.xherror.homework.Lab4.Lab4Activity
 import top.xherror.homework.databinding.ActivityMainBinding
 
 
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonLab3.setOnClickListener {
             startActivity(Intent(this, Lab3Activity::class.java))
+        }
+        binding.buttonLab4.setOnClickListener {
+            startActivity(Intent(this,Lab4Activity::class.java))
         }
 
     }

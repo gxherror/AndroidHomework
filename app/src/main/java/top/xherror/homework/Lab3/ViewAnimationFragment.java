@@ -132,21 +132,13 @@ public class ViewAnimationFragment extends BaseFragment {
         mTranslateAnimation = new TranslateAnimation(FROM_X_DELTA,TO_X_DELTA,FROM_Y_DELTA,TO_Y_DELTA);
         mTranslateAnimation.setStartOffset(3*DURATION);
 
-
-
-
         setAnimation.addAnimation(mAlphaAnimation);
         setAnimation.addAnimation(mRotateAnimation);
         setAnimation.addAnimation(mScaleAnimation);
         setAnimation.addAnimation(mTranslateAnimation);
         setAnimation.setDuration(DURATION);
-        //https://stackoverflow.com/questions/30732557/how-to-repeat-an-animationset-with-sequentially-added-animations
         //https://stackoverflow.com/questions/7609974/android-animation-listener
-        //https://stackoverflow.com/questions/5474923/onanimationend-is-not-getting-called-onanimationstart-works-fine
-
-        setAnimation.start();
-        /*
-        mRotateAnimation.setAnimationListener(new Animation.AnimationListener() {
+        setAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 Log.i(getLogTag(), "onAnimationStart");
@@ -155,6 +147,8 @@ public class ViewAnimationFragment extends BaseFragment {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Log.i(getLogTag(), "onAnimationEnd");
+                setAnimation.start();
+                //https://stackoverflow.com/questions/5474923/onanimationend-is-not-getting-called-onanimationstart-works-fine
             }
 
             @Override
@@ -162,7 +156,7 @@ public class ViewAnimationFragment extends BaseFragment {
                 Log.i(getLogTag(), "onAnimationRepeat");
             }
         });
+        setAnimation.start();
 
-         */
     }
 }

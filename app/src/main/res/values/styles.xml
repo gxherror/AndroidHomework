@@ -13,4 +13,20 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="Widget.Homework.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.Homework.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+
+    <declare-styleable name="ProgressView">
+        <attr name="line_width" format="dimension"/>
+        <attr name="line_color" format="color"/>
+    </declare-styleable>
+
 </resources>
