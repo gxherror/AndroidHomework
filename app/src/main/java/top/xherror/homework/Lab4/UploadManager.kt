@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
+import java.sql.Types.NULL
 
 /**
  * Created by huangxin.2020 on 2022/11/1
@@ -17,10 +18,33 @@ object UploadManager: UploadCallback {
     const val UPLOAD_PROGRESS = 3
 
     private var isUploading = false
+    private lateinit var  uploadThread :UploadThread
+    private lateinit var  handler: Handler
 
-    fun startUpload(handler: Handler) {
+    fun setHandler(handler: Handler){
+        this.handler=handler
+    }
+
+    fun startUpload(progress: Float = 1f) {
         if (isUploading) return
-        UploadThread(this, handler).start()
+        uploadThread = UploadThread(this, handler,progress)
+        uploadThread.start()
+    }
+
+    fun pauseUpload(){
+        uploadThread.interrupt()
+    }
+
+    fun cancelUpload(){
+        uploadThread.interrupt()
+        uploadThread.progress=0f
+
+    }
+
+    fun resumeUpload(){
+        val saved = uploadThread.progress
+        startUpload(saved)
+
     }
 
     override fun onUploadStart() {
@@ -48,33 +72,32 @@ object UploadManager: UploadCallback {
      * @param callback  回调
      * @param handler   利用Handler发送消息
      **/
-    private class UploadThread(private val callback: UploadCallback, private val handler: Handler): Thread() {
-
-        private var progress = 0f   // 0..1f
-
+    class UploadThread(private val callback: UploadCallback, private val handler: Handler,var progress: Float = 1f): Thread() {
         override fun run() {
-            progress = 0f
-            handler.sendMessage(Message.obtain(handler, UPLOAD_START))
+            //handler.sendMessage(Message.obtain(handler, UPLOAD_START))
             callback.onUploadStart()
             try {
                 upload()
                 handler.sendMessage(Message.obtain(handler, UPLOAD_SUCCESS))
                 callback.onUploadSuccess()
             } catch (e: Exception) {
-                handler.sendMessage(Message.obtain(handler, UPLOAD_FAIL))
+                //handler.sendMessage(Message.obtain(handler, UPLOAD_FAIL))
                 callback.onUploadFailed(e)
             }
         }
 
-        /** 模拟下载过程，每300ms下载10% **/
         private fun upload() {
-            while (progress < 1) {
-                sleep(300)
-                progress += 0.1f
-                progress = 1f.coerceAtMost(progress)
+            while (progress > 0f) {
+                sleep(1000)
+                progress -= 1f/60f
+                //progress = 1f.coerceAtMost(progress)
                 callback.onUploadProgress(progress)
-                handler.sendMessage(Message.obtain(handler, UPLOAD_PROGRESS, progress))
+                sendMessage()
             }
+        }
+
+        fun sendMessage(){
+            handler.sendMessage(Message.obtain(handler, UPLOAD_PROGRESS, progress))
         }
 
     }

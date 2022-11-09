@@ -7,6 +7,7 @@ import android.os.Looper
 import android.widget.Toast
 import top.xherror.homework.R
 import top.xherror.homework.databinding.ActivityLab4Binding
+import kotlin.math.roundToInt
 
 
 class Lab4Activity : AppCompatActivity() {
@@ -24,7 +25,9 @@ class Lab4Activity : AppCompatActivity() {
                 UploadManager.UPLOAD_SUCCESS -> toast("Upload Success")
                 UploadManager.UPLOAD_PROGRESS -> {
                     val progress = msg.obj as Float
-                    binding.progressView.progress = progress
+                    binding.progressCircleView.progress = progress
+                    val time : Int = (progress*60.0).toInt()
+                    binding.showTime.text = time.toString()
                 }
             }
             true
@@ -35,8 +38,30 @@ class Lab4Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityLab4Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.startStopButton.setOnClickListener {
-            UploadManager.startUpload(uploadHandler)
+        UploadManager.setHandler(uploadHandler)
+        var isStart = false
+        binding.startCancelButton.setOnClickListener {
+            if (!isStart){
+                UploadManager.startUpload()
+                binding.startCancelButton.text = "Cancel!"
+                isStart = !isStart
+            }else{
+                UploadManager.cancelUpload()
+                binding.startCancelButton.text = "Start!"
+                isStart = !isStart
+            }
+        }
+        var isPause = false
+        binding.resumePauseButton.setOnClickListener {
+            if (!isPause){
+                UploadManager.pauseUpload()
+                binding.resumePauseButton.text = "Resume!"
+                isPause = !isPause
+            }else{
+                UploadManager.resumeUpload()
+                binding.resumePauseButton.text = "Pause!"
+                isPause = !isPause
+            }
         }
     }
 

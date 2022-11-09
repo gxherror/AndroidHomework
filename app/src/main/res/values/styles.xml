@@ -29,4 +29,8 @@
         <attr name="line_color" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="ProgressCircleView">
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+
 </resources>

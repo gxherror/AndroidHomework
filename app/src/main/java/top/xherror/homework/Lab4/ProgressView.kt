@@ -20,7 +20,7 @@ class ProgressView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ): View(context, attrs, defStyleAttr) {
 
-    var progress = 0f   // 0..1f
+    var progress = 1f   // 0..1f
         set(value) {
             field = when {
                 value < 0 -> 0f
